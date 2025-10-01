@@ -1,4 +1,4 @@
-// js for making visualizations
+// js for making visualizations and their interactions
 console.log("vis.js loaded");
 
 const svg = document.getElementById('chartArea'); 
@@ -121,3 +121,18 @@ const chin = document.createElementNS('http://www.w3.org/2000/svg', 'line');
         chin.setAttribute("stroke", "black");
         chin.setAttribute('stroke-width', 2);
     svg2.appendChild(chin);
+
+// hint popup for the bars in visualizations
+let Bars = document.querySelectorAll("rect");
+Bars.forEach(rect => {
+    rect.addEventListener("click", function() {
+    alert("HINT: refresh this page and see how my music preferences change!");
+    })
+});
+
+// change colour of chiikawa's mouth in visualizations
+let colouring = document.querySelector("#chiikawaMouth");
+colouring.addEventListener("click", () => {
+    let randomColor = Math.floor(Math.random() * 777)
+        colouring.setAttribute("fill", `#${randomColor}`);
+});
