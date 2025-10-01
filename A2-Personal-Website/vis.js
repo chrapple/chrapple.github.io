@@ -33,6 +33,14 @@ for(let i=0; i<musicGenres.length; i++){
     svg.appendChild(texts);  
 };
 
+// hint popup for the bars in visualizations
+let Bars = document.querySelectorAll("rect");
+Bars.forEach(rect => {
+    rect.addEventListener("click", function() {
+    alert("HINT: refresh this page and see how my music preferences change!");
+    })
+});
+
 // drawing chiikawa
 // create the head
 const head = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
@@ -121,14 +129,6 @@ const chin = document.createElementNS('http://www.w3.org/2000/svg', 'line');
         chin.setAttribute("stroke", "black");
         chin.setAttribute('stroke-width', 2);
     svg2.appendChild(chin);
-
-// hint popup for the bars in visualizations
-let Bars = document.querySelectorAll("rect");
-Bars.forEach(rect => {
-    rect.addEventListener("click", function() {
-    alert("HINT: refresh this page and see how my music preferences change!");
-    })
-});
 
 // change colour of chiikawa's mouth in visualizations
 let colouring = document.querySelector("#chiikawaMouth");
