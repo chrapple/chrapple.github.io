@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite-api@5.6.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-tooltip"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      const options = {
+        config: {
+          // Vega-Lite default configuration
+        },
+        init: (view) => {
+          // initialize tooltip handler
+          view.tooltip(new vegaTooltip.Handler().call);
+        },
+        view: {
+          // view constructor options
+          // remove the loader if you don't want to default to vega-datasets!
+          loader: vega.loader({
+            baseURL: "https://cdn.jsdelivr.net/npm/vega-datasets@2/",
+          }),
+          renderer: "canvas",
+        },
+      };
+
+      // register vega and vega-lite with the API
+      vl.register(vega, vegaLite, options);
+    </script>
+    <style></style>
+  </head>
+  <body>
+    <header>
+        <h1>A3 Visualizations</h1>
+        <p>IAT355
+            <br> Kirsten Lee (301581379)
+            <br> <b>More detail in PDF</b>
+        </p>
+    </header>
+
+    <div class="container">
+      <h2>Visualization 1: Global sales by genre and platform</h2>
+      <p> I made a circle chart mapping Platform to x-axis and Genre to y-axis.
+        Circles are larger and darker with the more Global Sales they had.
+        This helped my goal of being able to quickly scan for the most important (in this case, high-selling) information.
+        I learned that Sports games sold the most on PS2 and Wii, Shooter games on Xbox 360, and Action games on PS3.
+        Action games seemed to dominate many platforms at once judging by the larger and dark circles, unlike Shooter that dominate on one.
+      </p>
+      <div id="vis1"></div>
+      <h2>Visualization 2: Sales over time by platform and genre</h2>
+      <p> I made two line charts mapping Year to x-axis and Global Sales to y-axis.
+        Each genre and platform I analyzed was assigned a different line colour and shape combination to identify them.
+        I learned that there was a likely connection between the peak of Sports game sales and the peak of Wii game sales in 2009, likely due to Wii Sports.
+        I also discovered that PS2 games had a huge peak in 1998, but no specific genre rose along with it so it was likely that the games were a mixed bag of genres.
+      </p>
+      <div id="vis2"></div>
+      <div id="vis3"></div>
+      <h2>Visualization 3: Regional sales vs. platform</h2>
+      <p> I made a chart of ticks mapping Platform to x-axis and Global Sales to y-axis.
+        I created conditional statements that assigned a tick to a specific colour if it had the most sales in JP, NA, EU or other.
+        This way I could get a quick glance at the cluster of colours to determine which region had the top sales.
+        I learned that games on the SNES and NES had more JP sales, while games on the GameCube and 2600 had more NA Sales.
+        I was surprised to see the PS4 showing a lot of green (EU Sales).
+        Other region sales didn't dominate a specific platform but had a couple games lying around like GTA: San Andreas and Gran Turismo 4.
+      </p>
+      <div id="vis4"></div>
+      <h2>Visualization 4: Visual story of RPG game sales between NA and JP</h2>
+      <p> I made a chart of points mapping JP Sales to x-axis and NA Sales to y-axis.
+        I created conditional statements that assigned games with higher JP Sales red and higher NA Sales blue.
+        I was interested in this topic because I like JRPGs. 
+        I was surprised to learn that the Pokemon performed extremely well in both regions.
+        There were quite a lot of games that made a diagonal between JP and NA sales, meaning they sold relatively similarly in each region.
+        I learned also that game series like Monster Hunter and Dragon Quest were only popular in Japan while games like Fallout and The Elder Scrolls were only popular in NA.
+      </p>
+      <div id="vis5"></div>
+    </div>
+    <script type="module" src="vis.js"></script>
+  </body>
+</html>
